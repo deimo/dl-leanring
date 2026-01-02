@@ -1,5 +1,5 @@
 import numpy as np
-from common.functions import sigmod, softmax, cross_entropy_error
+from common.functions import sigmoid, softmax, cross_entropy
 
 
 class Relu:
@@ -26,7 +26,7 @@ class Sigmoid:
         self.y = None
 
     def forward(self, x):
-        y = sigmod(x)
+        y = sigmoid(x)
         self.y = y
         return y
 
@@ -74,7 +74,7 @@ class SoftmaxWithLoss:
     def forward(self, X, t):
         self.t = t
         self.y = softmax(X)
-        self.loss = cross_entropy_error(self.y, self.t)
+        self.loss = cross_entropy(self.y, self.t)
 
         return self.loss
 
